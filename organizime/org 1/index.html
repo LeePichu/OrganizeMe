@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrganizeMe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chela+One&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <header>
+        <h1 class="titulu">Sirius</h1>
+        <a href="pagina.html">
+            <input class="conta" type="button" name="login" value="Login">
+        </a>
+    </header>
+    <main>
+        <h1 class="gerenciador">OrganizaMe</h1>
+        <h2>Gerencie suas tarefas</h2>
+        <section>
+        <form id="formulario">
+        <label for="nome"><strong>Comece sua lista:</strong></label> <br>
+        <div class="separador">
+        <input class="escrever"
+        type="text" 
+        id="item"
+        placeholder="Digite um item"
+        size="20">
+        </form>
+        <link rel="stylesheet" href="style.css">
+        <button onclick="adicionar()">Enviar</button>
+        <ul  class="lita" id="lista"></ul>
+        <script>
+        const form = document.getElementById("formulario");
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); 
+            adicionar();
+        })
+            function adicionar() {
+                const input = document.getElementById("item");
+                const texto = input.value.trim();
+                
+            
+
+                if (texto !== "") {
+
+                    const li = document.createElement("li");
+                    li.textContent = texto;
+                    document.getElementById("lista").appendChild(li);
+                    input.value = "";
+                    input.focus();
+                }
+            }
+        </script>
+        </div>
+        </section>
+    </main>
+    <footer>
+        
+    </footer>
+</body>
+</html>

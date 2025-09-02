@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.chela-one-regular {
+  font-family: "Chela One", system-ui;
+  font-weight: 100;
+  font-style: normal;
+}
+body {
+    font-family: "Chela One";
+    box-sizing: border-box;
+    background-color: white;
+    color: white;
+}
+main {
+    height: 100vh;
+    background-color: #070707;
+    margin: 15%;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    border-radius: 15px;
+    max-width: 100%;
+    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    justify-content: space-between;
+}
+label {
+    font-size: 28px; 
+    margin-left: 14px;
+    padding-left: 20%;
+}
+h1 {
+    text-align: center;
+    font-size: 40px;
+}
+img {
+    width: 10%;
+    margin-left: 15%;
+}
+.juntar {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10%;
+}
+button {
+    font-family: "Chela One";
+    color: hsla(0, 1%, 38%, 0.906);
+    border: 2px solid #1C1C1C;
+    border-radius: 30px;
+    width: 10%;
+    padding: 4px;
+    font-size: 20px;
+    background-color: white;
+}
+input {
+    background-color: white;
+    border-radius: 30px;
+    color: hsl(214, 74%, 20%);
+    font-family: "Chela One";
+    border: 2px solid #1C1C1C;
+    width: 60%;
+    padding: 2px;
+    font-size: 140%;
+    margin-left: 19%;
+    margin-bottom: 10%;
+}
+.senha {
+    background-color: white;
+    border-radius: 30px;
+    color: hsl(214, 74%, 20%);
+    font-family: "Chela One";
+    border: 2px solid #1C1C1C;
+    width: 60%;
+    padding: 2px;
+    font-size: 140%;
+    margin-left: 19%;
+}
+.password {
+    font-size: 20px; 
+    margin-left: 14px;
+    padding-left: 43%;
+    
+}
+button {
+    font-size: 26px; 
+    margin-left: 30%;
+    padding-left: 8px;
+    width: 40%;
+}
+a {
+    margin-left: 46%;
+    color: white;
+}
