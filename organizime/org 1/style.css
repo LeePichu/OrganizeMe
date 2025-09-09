@@ -1,94 +1,138 @@
 * {
     margin: 0;
     padding: 0;
-}
-.chela-one-regular {
-  font-family: "Chela One", system-ui;
-  font-weight: 100;
-  font-style: normal;
-}
-body {
+  }
+
+  body {
     font-family: "Chela One";
     box-sizing: border-box;
     background-color: #f7fafc;
     color: white;
-}
-button {
-    font-family: "Chela One";
-    color: hsla(0, 1%, 38%, 0.906);
-    border: 2px solid #1C1C1C;
-    border-radius: 30px;
-    width: 10%;
-    padding: 4px;
-    font-size: 20px;
-    background-color: white;
-}
-.escrever {
-    background-color: white;
-    border-radius: 30px;
-    color: hsl(214, 74%, 20%);
-    font-family: "Chela One";
-    border: 2px solid #1C1C1C;
-    width: 60%;
-    padding: 2px;
-    font-size: 140%;
-}
-section {
-    margin: 2%;
-}
-main {
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.943);
-    margin: 10%;
-    border-radius: 15px;
-    max-width: 100%;
-    overflow: auto;
-    overflow-y: auto;
-    overflow-x: hidden;
-    justify-content: space-between;
-}
-strong {
-    font-size: 25px; 
-    margin-left: 14px;
-}
-.lita {
-    padding: 3%;
-    font-size: 160%;
-}
-.gerenciador {
-    text-align: center;
-    padding: 4%;
-    font-size:60px;
-}
-header {
+  }
+
+  header {
     background-color: #0e0f0fe9;
     padding: 1%;
     display: flex;
     justify-content: space-between;
-}
-::placeholder {
-    padding: 10px;
-    align-items: center;
-}
-.conta {
+  }
+
+  .titulu {
+    font-size: 40px;
+    color: white;
+  }
+
+  .conta {
     font-family: "Chela One";
     padding: 4%;
     border-radius: 10px;
-    border: 2px solid #1C1C1C;
+    border: 2px solid #1c1c1c;
     font-size: 30px;
     width: 80px;
     background-color: white;
-}
-.titulu {
-    font-size: 40px;
-    display: flex;
-    color: white;
-}
-h2 {
+  }
+
+  main {
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.943);
+    margin: 10%;
+    border-radius: 15px;
+    overflow-y: auto;
+  }
+
+  .gerenciador {
+    text-align: center;
+    padding: 4%;
+    font-size: 60px;
+  }
+
+  h2 {
     text-align: center;
     font-size: 40px;
     margin-top: 2%;
-}
-.separador {
-    gap: 10px; 
-}
+  }
+
+  section {
+    margin: 2%;
+  }
+
+  strong {
+    font-size: 25px;
+    margin-left: 14px;
+  }
+
+  .separador {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+
+  .escrever, .data {
+    background-color: white;
+    border-radius: 30px;
+    color: hsl(214, 74%, 20%);
+    font-family: "Chela One";
+    border: 2px solid #1c1c1c;
+    padding: 5px 10px;
+    font-size: 18px;
+  }
+
+  .escrever {
+    flex: 2;
+  }
+
+  .data {
+    flex: 1;
+  }
+
+  button {
+    font-family: "Chela One";
+    border: 2px solid #1c1c1c;
+    border-radius: 30px;
+    padding: 4px 10px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  /* lista */
+  .lita {
+    padding: 3%;
+    font-size: 160%;
+  }
+
+  .lita li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: black;
+    color: white;
+    margin: 8px 0;
+    padding: 8px 12px;
+    border-radius: 15px;
+  }
+
+  .task-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .task-date {
+    font-size: 14px;
+    color: #555;
+  }
+
+  /* botão remover */
+  .remove-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 5px 12px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .remove-btn:hover {
+    background-color: darkred;
+  }
