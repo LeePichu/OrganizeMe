@@ -7,58 +7,91 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chela+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
     
 </head>
 <body>
-    <header>
-        <h1 class="titulu">Sirius</h1>
-        <a href="pagina.html">
-            <input class="conta" type="button" name="login" value="Login">
-        </a>
-    </header>
-    <main>
-        <h1 class="gerenciador">OrganizaMe</h1>
-        <h2>Gerencie suas tarefas</h2>
-        <section>
-        <form id="formulario">
-        <label for="nome"><strong>Comece sua lista:</strong></label> <br>
+  <header>
+    <h1 class="titulu">Sirius</h1>
+    <a href="pagina.html">
+      <input class="conta" type="button" name="login" value="Login" />
+    </a>
+  </header>
+
+  <main>
+    <h1 class="gerenciador">OrganizaMe</h1>
+    <h2>Gerencie suas tarefas</h2>
+
+    <section>
+      <form id="formulario">
+        <label for="item"><strong>Comece sua lista:</strong></label><br />
         <div class="separador">
-        <input class="escrever"
-        type="text" 
-        id="item"
-        placeholder="Digite um item"
-        size="20">
-        </form>
-        <link rel="stylesheet" href="style.css">
-        <button onclick="adicionar()">Enviar</button>
-        <ul  class="lita" id="lista"></ul>
-        <script>
-        const form = document.getElementById("formulario");
-        form.addEventListener("submit", function(event) {
-            event.preventDefault(); 
-            adicionar();
-        })
-            function adicionar() {
-                const input = document.getElementById("item");
-                const texto = input.value.trim();
-                
-            
-
-                if (texto !== "") {
-
-                    const li = document.createElement("li");
-                    li.textContent = texto;
-                    document.getElementById("lista").appendChild(li);
-                    input.value = "";
-                    input.focus();
-                }
-            }
-        </script>
+          <input class="escrever" type="text" id="item" placeholder="Digite um item" />
+          <input class="data" type="date" id="data" />
+          <button type="submit">Enviar</button>
         </div>
-        </section>
-    </main>
-    <footer>
-        
-    </footer>
+      </form>
+
+      <ul contenteditable="true" class="lita" id="lista"></ul>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById("formulario");
+    const lista = document.getElementById("lista");
+    const input = document.getElementById("item");
+    const inputData = document.getElementById("data");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      adicionar();
+    });
+
+    function adicionar() {
+      const texto = input.value.trim();
+      const data = inputData.value;
+
+      if (texto !== "") {
+        const li = document.createElement("li");
+
+        // bloco com texto + data
+        const divInfo = document.createElement("div");
+        divInfo.classList.add("task-info");
+
+        const spanTexto = document.createElement("span");
+        spanTexto.textContent = texto;
+        divInfo.appendChild(spanTexto);
+
+        if (data) {
+          const spanData = document.createElement("span");
+
+          // formatar data YYYY-MM-DD → DD/MM/YYYY
+          const partes = data.split("-");
+          const dataFormatada = `${partes[2]}/${partes[1]}/${partes[0]}`;
+
+          spanData.textContent = "Data: " + dataFormatada;
+          spanData.classList.add("task-date");
+          divInfo.appendChild(spanData);
+        }
+
+        // botão remover
+        const btn = document.createElement("button");
+        btn.textContent = "Remover";
+        btn.classList.add("remove-btn");
+        btn.onclick = function () {
+          li.remove();
+        };
+
+        li.appendChild(divInfo);
+        li.appendChild(btn);
+        lista.appendChild(li);
+
+        input.value = "";
+        inputData.value = "";
+        input.focus();
+      }
+    }
+  </script>
 </body>
 </html>
