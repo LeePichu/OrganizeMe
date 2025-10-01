@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chela+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <header>
+    </header>
+    <main>
+        <div class="juntar">
+        <img src="Sem_título-removebg-preview-removebg-preview.png">
+            <h1>Seja bem vindo ao OrganizeMe!</h1>
+        </div>
+        </a>
+        <form id="login">
+            <label for="email">Email:</label> <br>
+            <input class="escrever"
+            type="email" 
+            name="email" 
+            placeholder="Email">
+        <label for="senha">Senha:</label> <br>
+            <input class="escrever"
+            type="password"
+            name="senha" 
+            placeholder="Senha">
+        </form>
+        <a href="pagina2.html">Criar conta</a>
+        <button onclick="adicicionar()">Enviar</button>
+        <script>
+            const form = document.getElementById("login");
+            form.addEventListener("submit", function(event) {
+                event.preventDefault(); 
+                adicionar();
+            })
+                function adicionar() {
+                    const input = document.getElementById("escrever");
+                    const texto = input.value.trim();
+                }   
+        </script>
+    </main>
+    
+</body>
+</html>

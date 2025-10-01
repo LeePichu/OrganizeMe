@@ -1,6 +1,6 @@
-* {
-    margin: 0;
-    padding: 0;
+* html, body {
+  height: 100%;
+  margin: 0;
 }
 .chela-one-regular {
   font-family: "Chela One", system-ui;
@@ -8,22 +8,20 @@
   font-style: normal;
 }
 body {
-    font-family: "Chela One";
-    box-sizing: border-box;
-    background-color: white;
-    color: white;
+  font-family: "Chela One";
+  background: url("fundo.jpg") no-repeat center center fixed;
+  background-size: cover;
+
 }
 main {
-    height: 100vh;
-    background-color: #070707;
-    margin: 15%;
-    margin-top: 4%;
-    margin-bottom: 4%;
+    background-color: rgba(0, 0, 0, 0.850);
+    margin: 20%;
+    margin-top: 5%;
+    margin-bottom: 1%;
     border-radius: 15px;
-    max-width: 100%;
     overflow: auto;
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: hidden; 
     justify-content: space-between;
 }
 label {

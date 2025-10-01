@@ -5,9 +5,10 @@
 
   body {
     font-family: "Chela One";
-    box-sizing: border-box;
-    background-color: #f7fafc;
-    color: white;
+  background: url("fundo.jpg") no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
   }
 
   header {
@@ -23,22 +24,32 @@
   }
 
   .conta {
-    font-family: "Chela One";
-    padding: 4%;
-    border-radius: 10px;
-    border: 2px solid #1c1c1c;
-    font-size: 30px;
-    width: 80px;
-    background-color: white;
-  }
+    padding: 10px 25px;       
+    font-size: 30px;        
+    background-color: #000000; 
+    color: white;              
+    border: none;              
+    border-radius: 5px;        
+    cursor: pointer;         
+}
+
+.conta:hover {
+    background-color: #012df1; 
+}
+
 
   main {
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.943);
-    margin: 10%;
-    border-radius: 15px;
-    overflow-y: auto;
-  }
+  min-height: calc(580px - 80px); 
+  background-color: rgba(0, 0, 0, 0.943);
+  margin: 40px auto; 
+  border-radius: 15px;
+  padding: 20px;
+  max-width: 1000px; 
+  overflow-y: auto;
+  color: white;
+}
+
+
 
   .gerenciador {
     text-align: center;
@@ -122,7 +133,7 @@
     color: #555;
   }
 
-  /* botão remover */
+ 
   .remove-btn {
     background-color: red;
     color: white;
