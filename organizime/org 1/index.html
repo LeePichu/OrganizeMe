@@ -14,9 +14,9 @@
 <body>
   <header>
     <h1 class="titulu">Sirius</h1>
-   <button class="conta" onclick="window.location.href='../org%202/pagina.html'">Login</button>
-
-
+    <a href="pagina.html">
+      <input class="conta" type="button" name="login" value="Login" />
+    </a>
   </header>
 
   <main>
@@ -33,9 +33,28 @@
         </div>
       </form>
 
-      <ul contenteditable="true" class="lita" id="lista"></ul>
+      <div class="separador">
+        <label for="filtro">
+         <strong>filtrar:</strong>
+        </label>
+        <select name="filtro" id="">
+          <option value="todas">todas</option>
+          <option value="concluida">concluida</option>
+          <option value="pendente">pendente</option>
+          <option value="atrasada">atrasada</option>
+        </select>
+      </div>
+
+      <ul class="lita" id="lista"></ul>
+
+      <div id="contador" style="text-align: center; margin-top: 15px; font-size: 18px;">
+        total: 0 | pendente: 0 | concluidas: 0
+      </div>
     </section>
   </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+
 
   <script>
     const form = document.getElementById("formulario");
@@ -81,6 +100,7 @@
         btn.classList.add("remove-btn");
         btn.onclick = function () {
           li.remove();
+          atualizarContador();
         };
 
         li.appendChild(divInfo);
@@ -92,6 +112,57 @@
         input.focus();
       }
     }
+
+    new Sortable(lista, {
+      animation: 150,
+      ghostClass: "dragging", // classe aplicada ao item enquanto arrasta
+    });
+
+    const checkbox =
+document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.onchange = () => {
+      li.ClassList.toggle("concluida",
+    checkbox.checked);
+    aplicarFiltro();
+    atualizarContador();
+    }
+   filtro.addEventListener("change",
+    aplicarfiltro);
+
+    function aplicarFiltro() {
+      const itens =
+      lista.querySelectorAll("li");
+      const hoje = new
+      Date().tolSOString().split("T")[0];
+      const tipo = filtro.value;
+
+      itens.foreach(li => {
+        const concluida = li.classList.contains("concluida");
+        const spanData = li.querySelector(".task-data");
+        const data = spandata ? spanData.dataset.raw : null;
+
+        let mostar = true;
+
+        if(tipo === "concluidas" && ! concluida) mostar = false;
+        if(tipo === "pendentas" && ! concluida) mostar = false;
+        if(tipo === "hoje" && ! concluida) mostar = false;
+        if(tipo === "atrasadas" && ! concluida) mostar = false;
+
+        li.style.display = mostar ? "flex": "none";
+      })
+    }
+   
+     function atualizarContador (){
+      const itens = lista.querySelectorAll("li");
+      let total = itens.length;
+      let concluidas = lista.querySelectorAll("li.concluida").length;
+
+      let pendentes = total - concluidas;
+
+      contador.textContent = 'total ${total} | pendentes${pendentes} | concluidas: ${concluidas}';
+     }
+
   </script>
 </body>
 </html>
