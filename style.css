@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    background:url("fundo.jpg") no-repeat center center fixed;
+    color: #fff; /* texto branco */
+    padding: 20px;
+    text-align: center;
+  }
+
+  header {
+    background-color: #000000;
+    padding: 1%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  main {
+    min-height: calc(580px - 80px); 
+    background-color: rgba(0, 0, 0, 0.943);
+    margin: 40px auto; 
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 1000px; 
+    overflow-y: auto;
+    color: white;
+  }
+  
+  /* Estilo padrão de botões */
+  button {
+    background: #fff; /* fundo branco */
+    color: #000; /* texto preto */
+    border: none;
+    border-radius: 8px;
+    padding: 6px 10px;
+    margin: 4px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  button:hover {
+    background: #ddd; /* muda a cor ao passar o mouse */
+  }
+  
+  /* Container que guarda todas as lojas */
+  .container {
+    display: flex;
+    flex-wrap: wrap; /* permite quebrar linha */
+    gap: 15px; /* espaçamento entre lojas */
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  /* Cada quadrado de loja */
+  .loja {
+    background: #111; /* fundo cinza escuro */
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 10px;
+    width: 250px;
+  }
+  
+  /* Campos de texto */
+  input {
+    border-radius: 6px;
+    border: 1px solid #444;
+    padding: 5px;
+    margin: 3px;
+    width: 80%;
+  }
+  
+  /* Cada item dentro da loja */
+  .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .item input {
+    width: 45%;
+  }
+  
+  /* Total da loja */
+  .total {
+    margin-top: 8px;
+  }
+  
+  /* Caixa que mostra qual loja é a mais barata */
+  #melhor {
+    background: #fff;
+    color: #000;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  
+  /* ======== ESTILO DO BOTÃO DE REMOVER ======== */
+  
+  /* Botão vermelho para remover loja */
+  .remove-loja {
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 4px 8px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .remove-loja:hover {
+    background: darkred; /* cor mais escura ao passar o mouse */
+    transform: scale(1.05);
+  }
+  
+  /* Linha do nome da loja + botão lado a lado */
+  .topo-loja {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+  }

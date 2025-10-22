@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OrganiziMe</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ======== CABEÇALHO ======== -->
+<header>
+    <h1 class="titulu">Sirius</h1>
+    <a href="pagina.html">
+      <input class="conta" type="button" name="login" value="Login" />
+    </a>
+  </header>
+
+  
+<main><h1>organizame</h1>
+ <!-- Botão que cria novas lojas -->
+ <button onclick="addLoja()">➕ Adicionar Loja</button>
+
+ <!-- Onde as lojas serão inseridas -->
+ <div class="container" id="lojas"></div>
+
+ <!-- Mostra qual loja é mais barata -->
+ <div id="melhor">Aguardando cálculo...</div>
+</main>
+
+
+<script>
+/* ======== VARIÁVEIS PRINCIPAIS ======== */
+
+let contador = 0; // controla o número total de lojas criadas
+let livres = [];  // guarda números de lojas removidas para reutilizar
+
+/* ======== FUNÇÃO PARA ADICIONAR LOJA ======== */
+function addLoja() {
+  // se houver número livre, reutiliza, senão cria novo
+  const id = livres.length ? livres.shift() : ++contador;
+
+  // cria o quadrado da loja
+  const div = document.createElement("div");
+  div.className = "loja";
+  div.id = `loja-${id}`;
+
+  // conteúdo HTML dentro da loja
+  div.innerHTML = `
+    <div class="topo-loja">
+      <input id="nome-${id}" value="Loja ${id}" oninput="comparar()"> 
+      <!-- campo editável com o nome da loja -->
+      <button class="remove-loja" onclick="removerLoja(${id})">✖</button>
+      <!-- botão vermelho para apagar a loja -->
+    </div>
+
+    <!-- aqui ficarão os itens -->
+    <div id="itens-${id}"></div>
+
+    <!-- botão para adicionar produtos -->
+    <button onclick="addItem(${id})">+ Item</button>
+
+    <!-- mostra o total da loja -->
+    <div class="total">Total: R$ <span id="total-${id}">0.00</span></div>
+  `;
+
+  // adiciona a loja no container
+  document.getElementById("lojas").appendChild(div);
+}
+
+/* ======== FUNÇÃO PARA ADICIONAR ITEM ======== */
+function addItem(id) {
+  const div = document.createElement("div");
+  div.className = "item";
+  div.innerHTML = `
+    <input placeholder="Produto">
+    <input type="number" placeholder="Preço" step="0.01" oninput="calc(${id})">
+    <!-- botão vermelho pequeno para remover o item -->
+    <button onclick="this.parentElement.remove(); calc(${id})">✖</button>
+  `;
+  document.getElementById(`itens-${id}`).appendChild(div);
+}
+
+/* ======== REMOVER LOJA ======== */
+function removerLoja(id) {
+  document.getElementById(`loja-${id}`).remove(); // apaga o quadrado da loja
+  livres.push(id); // libera o número para reuso
+  livres.sort((a,b)=>a-b); // ordena os números livres
+  comparar(); // atualiza a comparação
+}
+
+/* ======== CALCULAR TOTAL DE UMA LOJA ======== */
+function calc(id) {
+  let total = 0;
+  // pega todos os preços dentro da loja e soma
+  document.querySelectorAll(`#loja-${id} input[type=number]`).forEach(i=>{
+    total += parseFloat(i.value)||0;
+  });
+  // mostra o total formatado com duas casas decimais
+  document.getElementById(`total-${id}`).textContent = total.toFixed(2);
+  comparar(); // atualiza a comparação geral
+}
+
+/* ======== COMPARAR TODAS AS LOJAS ======== */
+function comparar() {
+  // cria lista com nome e total de cada loja
+  const lojas = [...document.querySelectorAll(".loja")].map(div=>{
+    const id = div.id.split("-")[1];
+    return {
+      nome: document.getElementById(`nome-${id}`).value,
+      total: parseFloat(document.getElementById(`total-${id}`).textContent)||0
+    };
+  });
+
+  // se não há lojas, mostra mensagem padrão
+  if (!lojas.length)
+    return document.getElementById("melhor").textContent = "Aguardando cálculo...";
+
+  // encontra o menor total
+  const menor = Math.min(...lojas.map(l=>l.total));
+
+  // encontra todas as lojas com esse menor total
+  const melhores = lojas.filter(l=>l.total===menor);
+
+  // cria o texto de resultado
+  let texto = melhores.length>1
+    ? `⚖️ ${melhores.map(l=>l.nome).join(" e ")} têm o mesmo menor preço (R$ ${menor.toFixed(2)}).`
+    : `🏆 ${melhores[0].nome} é a mais barata (R$ ${menor.toFixed(2)}).`;
+
+  // adiciona quanto mais caras são as outras
+  lojas.forEach(l=>{
+    if(l.total>menor)
+      texto += ` ${l.nome} é R$ ${(l.total-menor).toFixed(2)} mais cara.`;
+  });
+
+  // exibe o resultado na tela
+  document.getElementById("melhor").textContent = texto;
+}
+</script>
+
+</body>
+</html>
